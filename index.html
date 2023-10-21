@@ -1,441 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excalidraw Clone</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
   </head>
-  <body>
-    <header class="mt-5">
-      <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
-      >
-        <div
-          style="
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-          "
-        >
-          <nav class="navbar">
-            <div class="container-fluid">
-              <button
-                class="navbar-toggler"
-                id="top-left"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-2 mb-2">
-                  <li class="nav-item mb-2 d-flex justify-content-between">
-                    <a href="#">Open</a>
-                    <p class="ms-2">Ctrl+O</p>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Save to...</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Export image...</a>
-                    <p class="ms-2">Ctrl+Shift+E</p>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Live collaboration</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Help</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Reset the canvas</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Excalidraw+</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Github</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Discord</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Twitter</a>
-                  </li>
-                  <li class="nav-item mb-2 d-flex justify-content-start">
-                    <a href="#">Dark Mode</a>
-                    <p>Shift+Alt+D</p>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <form class="d-flex" role="search">
-                      <select name="language" id="language" class="form-select">
-                        <option value="english" selected>English</option>
-                        <option value="hindi">Hindi</option>
-                        <option value="bahasa-indonesia">
-                          Bahasa Indonesia
-                        </option>
-                        <option value="catalia">Catalia</option>
-                        <option value="deutsch">Deutsch</option>
-                        <option value="espanol">Espanol</option>
-                        <option value="euskara">Euskara</option>
-                        <option value="francais">Francais</option>
-                        <option value="galego">Galego</option>
-                        <option value="italiano">italiano</option>
-                        <option value="kurdi">Kurdi</option>
-                        <option value="latviesu">Latviesu</option>
-                        <option value="norsk-bokmal">Norsk bokmal</option>
-                        <option value="occitan">Occitan</option>
-                        <option value="polski">Polski</option>
-                        <option value="portugues">Portugues</option>
-                        <option value="portugues-brasileiro">
-                          Portugues Brasileiro
-                        </option>
-                        <option value="romana">Romana</option>
-                        <option value="slovencina">Slovencina</option>
-                        <option value="slovenscina">Slovenscina</option>
-                        <option value="suomi">Suomi</option>
-                        <option value="svenska">Svenska</option>
-                        <option value="taqbaylit">Taqbaylit</option>
-                        <option value="turkce">Turkce</option>
-                        <option value="cesky">Cesky</option>
-                        <option value="eyynvika">Eyynvika</option>
-                        <option value="pyccknn">Pyccknn</option>
-                        <option value="ykpaihcbka">Ykpaihcbka</option>
-                      </select>
-                    </form>
-                  </li>
-                  <li class="nav-item mb-2">
-                    <form>
-                      <label for="canvas-background" class="form-label"
-                        >Canvas Background</label
-                      >
-                      <div class="radio-container">
-                        <input
-                          type="radio"
-                          id="radio1"
-                          name="background"
-                          value="color1"
-                        />
-                        <label for="radio1" class="radio-label"></label>
-                        <input
-                          type="radio"
-                          id="radio2"
-                          name="background"
-                          value="color2"
-                        />
-                        <label for="radio2" class="radio-label"></label>
-                        <input
-                          type="radio"
-                          id="radio3"
-                          name="background"
-                          value="color3"
-                        />
-                        <label for="radio3" class="radio-label"></label>
-                        <input
-                          type="radio"
-                          id="radio4"
-                          name="background"
-                          value="color4"
-                        />
-                        <label for="radio4" class="radio-label"></label>
-                        <input
-                          type="radio"
-                          id="radio5"
-                          name="background"
-                          value="color5"
-                        />
-                        <label for="radio5" class="radio-label"></label>
-                      </div>
-                    </form>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-        <div
-          class="mx-5"
-          style="display: flex; justify-content: center; align-items: center"
-          id="top-center"
-        >
-          <nav class="navbar">
-            <div class="container-fluid">
-              <ul>
-                <li class="pe-4 me-2 border-end border-dark">
-                  <a href="#">
-                    <img
-                      src="./images/padlock.png"
-                      alt="padlock image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/hand.png"
-                      alt="hand image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/cursor.png"
-                      alt="cursor image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/square.png"
-                      alt="square image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/rhombus.png"
-                      alt="rhombus image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/circle.png"
-                      alt="circle image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/right-arrow.png"
-                      alt="right-arrow image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/line.png"
-                      alt="line image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/text.png"
-                      alt="text image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/gallery.png"
-                      alt="gallery image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/eraser.png"
-                      alt="eraser image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 px-4 mx-2 border-start border-dark">
-                  <a href="#">
-                    <img
-                      src="./images/shapes.png"
-                      alt="shapes image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <div
-          style="display: flex; justify-content: flex-end; align-items: center"
-          id="top-right"
-        >
-          <nav class="navbar">
-            <div class="container-fluid">
-              <ul>
-                <li class="pe-4 me-2 border-end border-dark">
-                  <a href="#">
-                    <img
-                      src="./images/people.png"
-                      alt="people image"
-                      width="30"
-                      height="30"
-                    />
-                  </a>
-                </li>
-                <li class="p-2 mx-2">
-                  <a href="#">
-                    <img
-                      src="./images/book.png"
-                      alt="book image"
-                      width="30"
-                      height="30"
-                      class="me-2"
-                    />
-                    Library
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+<body>
+ <!-- navtag with three elements in it 
+    -->
+    <nav class="nav d-flex align-items-center justify-content-between">
+      
+      <div>
+        <button class=" hamburger-button  rounded bg-light border-1 border-secondary " style="width:40px;height:40px; border:1px soolid gray;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div style="display:flex; flex-direction:column; align-items:center;justify-content:space-between; ">
+           <div style="width:20px; height:2px; border-radius:33px;  background-color:gray; align-self:center;margin:1px;"></div>
+           <div style="width:20px; height:2px; border-radius:33px; background-color:gray; align-self:center;margin:1px;"></div> 
+           <div style="width:20px; height:2px; border-radius:33px; background-color:gray; align-self:center;margin:1px;"></div>
+           </div>
+         </button>
+         <ul class="dropdown-menu menu">
+           <li><a class="dropdown-item d-flex align-items-center justify-content-between" href="#"> <div><i class="fa-regular fa-folder"></i> Open  </div> <span style="font-size: small; color: gray; align-self: flex-end;">Ctrl+O</span></a></li>
+           <li><a class="dropdown-item" href="#">Save to...</a></li>
+           <li><a class="dropdown-item d-flex align-items-center justify-content-between" href="#"><div>Export image...</div> <span style="font-size: small; color: gray;">Ctrl+Shift+E</span></a></li>
+           <li><a class="dropdown-item" href="#">Live Collaboration...</a></li>
+           <li><a class="dropdown-item" href="#">Help</a></li>
+           <li><a class="dropdown-item" href="#">Reset the canvas</a></li>
+            <hr>
+
+            <li><a class="dropdown-item" href="#">Excalidraw+</a></li>
+            <li><a class="dropdown-item" href="#">GitHUb</a></li>
+            <li><a class="dropdown-item" href="#">Discord</a></li>
+            <li><a class="dropdown-item" href="#">Twitter</a></li>
+
+            <hr>
+
+            <li><a class="dropdown-item" href="#">Dark mode</a></li>
+            
+          <label class="d-flex align-items-center justify-content-center" for="Language"></label>
+          <select name="Language" id="Language">
+          <option value="English">English</option>
+          <option value="Marathi">Marathi</option>
+          <option value="Kannada">Kannada</option>
+          <option value="French">French</option>
+          </select>
+
+         </ul>
+       </div>
+ 
+        <div class="list navmid shadow" style=" width: 100%; overflow-x: scroll; overflow-y: hidden; display: flex; align-items: center;   height:48px;   border-radius: 5px;">
+               
+               
+               <button class=" lock btn" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 35px;">
+                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#abb0ba}</style><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>  
+               </button>              
+               
+               <div class="line1 v-l">
+ 
+               </div>
+ 
+               <button class=" hand btn" style="border-radius: 10px; display: flex; align-items: center; justify-content: center;width: 40px; height: 35px; ">
+                 <svg xmlns="http://www.w3.org/2000/svg"  height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#a0a2a6}  </style><path d="M256 0c-25.3 0-47.2 14.7-57.6 36c-7-2.6-14.5-4-22.4-4c-35.3 0-64 28.7-64 64V261.5l-2.7-2.7c-25-25-65.5-25-90.5 0s-25 65.5 0 90.5L106.5 437c48 48 113.1 75 181 75H296h8c1.5 0 3-.1 4.5-.4c91.7-6.2 165-79.4 171.1-171.1c.3-1.5 .4-3 .4-4.5V160c0-35.3-28.7-64-64-64c-5.5 0-10.9 .7-16 2V96c0-35.3-28.7-64-64-64c-7.9 0-15.4 1.4-22.4 4C303.2 14.7 281.3 0 256 0zM240 96.1c0 0 0-.1 0-.1V64c0-8.8 7.2-16 16-16s16 7.2 16 16V95.9c0 0 0 .1 0 .1V232c0 13.3 10.7 24 24 24s24-10.7 24-24V96c0 0 0 0 0-.1c0-8.8 7.2-16 16-16s16 7.2 16 16v55.9c0 0 0 .1 0 .1v80c0 13.3 10.7 24 24 24s24-10.7 24-24V160.1c0 0 0-.1 0-.1c0-8.8 7.2-16 16-16s16 7.2 16 16V332.9c-.1 .6-.1 1.3-.2 1.9c-3.4 69.7-59.3 125.6-129 129c-.6 0-1.3 .1-1.9 .2H296h-8.5c-55.2 0-108.1-21.9-147.1-60.9L52.7 315.3c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L119 336.4c6.9 6.9 17.2 8.9 26.2 5.2s14.8-12.5 14.8-22.2V96c0-8.8 7.2-16 16-16c8.8 0 16 7.1 16 15.9V232c0 13.3 10.7 24 24 24s24-10.7 24-24V96.1z"/></svg>
+               </button>
+ 
+ 
+               <div class="d-flex align-items-center justify-content-center ">
+                 
+                
+                 <button class="btn" style="position:relative; width: 40px; height: 35px; border-radius: 10px; border:none; background-color: fff; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#616365}</style><path d="M0 55.2V426c0 12.2 9.9 22 22 22c6.3 0 12.4-2.7 16.6-7.5L121.2 346l58.1 116.3c7.9 15.8 27.1 22.2 42.9 14.3s22.2-27.1 14.3-42.9L179.8 320H297.9c12.2 0 22.1-9.9 22.1-22.1c0-6.3-2.7-12.3-7.4-16.5L38.6 37.9C34.3 34.1 28.9 32 23.2 32C10.4 32 0 42.4 0 55.2z"/></svg>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">1</sub>
+                 </button>
+                
+                 <button class="btn" style="position:relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#707275}</style><path d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/></svg>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray;font-size: x-small;">&nbsp; 2</sub>
+                 </button>                
+                 
+                 <button class="btn"  style=" position:relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#737578}</style><path d="M284.3 11.7c-15.6-15.6-40.9-15.6-56.6 0l-216 216c-15.6 15.6-15.6 40.9 0 56.6l216 216c15.6 15.6 40.9 15.6 56.6 0l216-216c15.6-15.6 15.6-40.9 0-56.6l-216-216z"/></svg>
+                   <sub style=" position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">3</sub>
+                 </button>
+ 
+ 
+                 <button class="btn" style=" position:relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#777879}</style><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray;position:absolute;bottom:10px; right:3px; font-size: x-small;"> &nbsp; 4</sub>
+                 </button>
+ 
+                 <button class="btn" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#808185}</style><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">5</sub>
+                 </button>
+                 
+                 <button class="btn" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <div style="width:15px; height:2px; border-radius:33px; background-color:gray; align-self:center;margin:1px;"></div> 
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">6</sub>
+                 </button>
+                 
+                 <button class="btn pen" id="pen" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg"  height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#6f7071}</style><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">7</sub>
+                 </button>
+ 
+                 
+                 <button class="btn" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#7e7f81}</style><path d="M254 52.8C249.3 40.3 237.3 32 224 32s-25.3 8.3-30 20.8L57.8 416H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-1.8l18-48H303.8l18 48H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H390.2L254 52.8zM279.8 304H168.2L224 155.1 279.8 304z"/></svg>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">8</sub>
+                 </button>
+ 
+                 <button class="btn" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <i class="fa-regular fa-image fa-lg" style="color: #727274;"></i>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">9</sub> 
+                 </button>
+ 
+                 <button class="btn" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <i class="fa-solid fa-eraser fa-lg" style="color: #727274;"></i>
+                   <sub style="position: absolute; bottom:10px; right:3px;color: gray; font-size: x-small;">0</sub> 
+                 </button>
+ 
+                 <div class="v-l">
+ 
+                 </div>
+               </div>
+               
+               <button class="btn shapes" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <i class="fa-solid fa-shapes" style="color: #89898b;"></i>
+                 </button>
+ 
+ 
+                 <button class="btn hash" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                   <i class="fa-solid fa-hashtag" style="color: grey;"></i>
+                 </button>
+ 
+                 <button class="btn code d-flex align-items-center justify-content-center" style=" position: relative; width: 40px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <>
+                 </button>
+ 
+             </div>
+ 
+         <div class="d-flex align-items-center">
+           <button class="live-collab m-2">
+             <i class="fa-solid fa-user-group" style="color: #f9fafa;"></i>
+           </button>
+           <button class="library d-flex align-items-center justify-content-between m-2">
+             <i class="fa-solid fa-book-open m-1" style="color: #ababab;"></i> 
+             <div class="librarybtntext align-items-center"> Library</div>
+           </button>
+         </div>
       </div>
-    </header>
-    <main>
-      <section>
-        <h1 class="fw-bold fst-italic">
-          <img
-            src="./images/apple-touch-icon.png"
-            alt="excalidraw main logo"
-            width="80"
-            height="80"
-          />
-          EXCALIDRAW
-        </h1>
-        <p class="text-body-tertiary text-center fs-5 mt-3">
-          All your data is saved locally in your browser.
-        </p>
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action border-0"
-            >Open</a
-          >
-          <a href="#" class="list-group-item list-group-item-action border-0"
-            >Help</a
-          >
-          <a href="#" class="list-group-item list-group-item-action border-0"
-            >Live collaboration...</a
-          >
-          <a href="#" class="list-group-item list-group-item-action border-0"
-            >Try Excalidraw Plus!</a
-          >
-        </div>
-      </section>
-    </main>
-    <footer class="mb-5">
-      <section class="d-flex justify-content-between align-items-center">
-        <div class="d-flex" id="bottom-left">
-          <div
-            class="d-flex justify-content-between align-items-center border rounded-4 p-2 me-5"
-          >
-            <img
-              src="./images/minus.png"
-              alt="minus image"
-              width="30"
-              height="30"
-              class="me-3"
-            />
-            <img
-              src="./images/number-10.png"
-              alt="number-10 image"
-              width="30"
-              height="30"
-            />
-            <img
-              src="./images/addition.png"
-              alt="addition image"
-              width="30"
-              height="30"
-              class="ms-3"
-            />
-          </div>
-          <div
-            class="d-flex justify-content-start align-items-center border rounded-4 p-2"
-          >
-            <img
-              src="./images/undo.png"
-              alt="undo image"
-              width="30"
-              height="30"
-              class="me-2"
-            />
-            <img
-              src="./images/redo.png"
-              alt="redo image"
-              width="30"
-              height="30"
-            />
-          </div>
-        </div>
-        <div id="bottom-right">
-          <img
-            src="./images/insurance.png"
-            alt="insurance image"
-            width="30"
-            height="30"
-            class="me-2"
-          />
-          <img
-            src="./images/question.png"
-            alt="question image"
-            width="30"
-            height="30"
-          />
-        </div>
-      </section>
-    </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./script.js"></script>
-  </body>
+
+    </nav>
+
+       
+  <canvas id="canvas" width="100%" height="100%"></canvas>
+
+
+    <div class="d-flex resize align-items-center justify-content-center">
+      <button class="plus">+</button>
+      <button class="middle">100%</button>
+      <button class="minus">-</button>
+    </div>
+
+
+    <div class="unre d-flex container">
+      <button class="paint" style="display: none;">
+        <i class="fa-solid fa-palette" style="color: #84868b;"></i>
+      </button>
+      <button class="undo">
+        <i class="fa-solid fa-arrow-rotate-left" style="color: #6e7072;"></i>
+      </button>
+      <button class="redo">
+        <i class="fa-solid fa-arrow-rotate-right" style="color: #6e7072;"></i>
+      </button>
+    </div>
+      
+
+
+      <script src="./index.js"></script>
+      <script src="./freehand.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>
